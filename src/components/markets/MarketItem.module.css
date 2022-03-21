@@ -1,0 +1,68 @@
+.item {
+  margin: 1rem 0;
+}
+
+.container {
+  display: flex;
+}
+
+.ticker {
+  font-size: 30px;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.price {
+  width: 8rem;
+  justify-content: center;
+  text-align: end;
+  background-color: lightgray;
+  border-radius: 0.3rem;
+  font-size: 28px;
+  font-weight: 500;
+  padding: 1rem;
+  margin: 0.2rem 0;
+}
+
+.image {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.content {
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  color: green;
+}
+
+.actions {
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  color: #77002e;
+  border: 1px solid #77002e;
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #ffe2ed;
+}
