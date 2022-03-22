@@ -4,7 +4,7 @@ import Card from "../ui/Card"
 import classes from './NewMarketForm.module.css'
 
 function NewMarketForm(props) {
-  const titleInputRef = useRef()
+  const tickerInputRef = useRef()
   const imageInputRef = useRef()
   const priceInputRef = useRef()
   const changeInputRef = useRef()
@@ -13,14 +13,14 @@ function NewMarketForm(props) {
   function submitHandler(event) {
     event.preventDefault()
 
-    const enteredTitle = titleInputRef.current.value
+    const enteredTicker = tickerInputRef.current.value
     const enteredImage = imageInputRef.current.value
     const enteredPrice = priceInputRef.current.value
     const enteredChange = changeInputRef.current.value
     const enteredMovement = movementInputRef.current.value
 
     const marketData = {
-      title: enteredTitle,
+      ticker: enteredTicker,
       image: enteredImage,
       price: enteredPrice,
       change: enteredChange,
@@ -34,8 +34,8 @@ function NewMarketForm(props) {
   return <Card>
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.control}>
-        <label htmlFor='title'>Stock Ticker</label>
-        <input type='text' required id='title' ref={titleInputRef} />
+        <label htmlFor='ticker'>Stock Ticker</label>
+        <input type='text' required id='ticker' ref={tickerInputRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor='image'>Logo</label>

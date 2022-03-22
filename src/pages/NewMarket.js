@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 import NewMarketForm from "../components/markets/NewMarketForm";
 
@@ -6,19 +7,12 @@ function NewMarketPage() {
   const navigate = useNavigate()
 
   function onAddMarket(marketData) {
-    fetch('http://localhost:3001/api/insert',
-      {
-        method: 'POST',
-        // body: JSON.stringify(marketData),
-        body: JSON.stringify({
-          name: 'test'
-        }),
-        headers: {
-          'Content-Type': 'applications/json'
-        }
-      }).then(() => {
+    axios.post('http://localhost:3001/market', { marketData })
+      .then((response) => {
+        console.log(response)
         navigate('/')
       })
+      .catch((error) => console.log(error))
   }
 
   return <section>
