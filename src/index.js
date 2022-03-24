@@ -4,10 +4,13 @@ import { BrowserRouter } from 'react-router-dom'
 
 import './index.css';
 import App from './App';
+import { WatchlistsContextProvider } from './store/watchlists-context'
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <WatchlistsContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </WatchlistsContextProvider>,
   document.getElementById('root')
 );

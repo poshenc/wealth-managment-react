@@ -9,7 +9,6 @@ function NewMarketPage() {
   function onAddMarket(marketData) {
     axios.post('http://localhost:3001/market', { marketData })
       .then((response) => {
-        console.log(response)
         navigate('/')
       })
       .catch((error) => console.log(error))
