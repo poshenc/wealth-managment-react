@@ -1,5 +1,5 @@
-import { createContext, useState } from 'react'
-
+import { createContext, useState, useEffect } from 'react'
+import axios from 'axios'
 
 const WatchlistsContext = createContext({
   watchlists: [],
@@ -15,14 +15,24 @@ export function WatchlistsContextProvider(props) {
   const [userWatchlists, setUserWatchlists] = useState([])
 
   function addWatchlistHandler(watchlistMarket) {
-    //Todo: API call database
+    axios.post('http://localhost:3001/watchlist', { watchlistMarket })
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+
     setUserWatchlists((prevUserWatchlists) => {
       return prevUserWatchlists.concat(watchlistMarket)
     })
   }
 
   function removeWatchlistHandler(marketId) {
-    //Todo: API call database
+    axios.delete('http://localhost:3001/watchlist', { data: { marketId } })
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+
     setUserWatchlists(prevUserWatchlists => {
       return prevUserWatchlists.filter(market => market.id !== marketId)
     })
@@ -31,6 +41,19 @@ export function WatchlistsContextProvider(props) {
   function itemIsWatchlistHandler(marketId) {
     return userWatchlists.some(market => market.id === marketId)
   }
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/watchlist', {
+      params: {
+        userId: 1
+      }
+    })
+      .then(response => {
+        const data = response.data
+        console.log(data)
+        setUserWatchlists(data)
+      })
+  }, [])
 
 
 
