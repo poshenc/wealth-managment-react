@@ -9,9 +9,33 @@ function AllMarketsPage() {
   useEffect(() => {
     setIsLoading(true)
 
-    axios.get('http://localhost:3001/')
+    axios.get('http://localhost:8000/')
       .then(response => {
         const data = response.data
+        console.log('all markets', data)
+        const tickers = data.map(stock => stock.ticker)
+        console.log(tickers) //['AAPL', 'TSLA', 'AMZN']
+
+        var options = {
+          method: 'GET',
+          url: 'https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=AAPL',
+          params: { modules: 'defaultKeyStatistics,assetProfile' },
+          headers: {
+            'x-api-key': 'vETzRpOnRt67Kcf8CEtPc7BbsxJ2ge9Y9PydSmsZ'
+          }
+        };
+
+        axios.request(options).then(function (response) {
+          console.log('regularMarketPrice', response.data.quoteResponse.result[0].regularMarketPrice);
+          console.log('regularMarketChange', response.data.quoteResponse.result[0].regularMarketChange)
+          console.log('regularMarketChangePercent', response.data.quoteResponse.result[0].regularMarketChangePercent);
+        }).catch(function (error) {
+          console.error(error);
+        });
+
+
+
+        //old code
         setIsLoading(false)
         setLoadedMarkets(data)
       })

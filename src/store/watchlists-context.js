@@ -15,7 +15,7 @@ export function WatchlistsContextProvider(props) {
   const [userWatchlists, setUserWatchlists] = useState([])
 
   function addWatchlistHandler(watchlistMarket) {
-    axios.post('http://localhost:3001/watchlist', { watchlistMarket })
+    axios.post('http://localhost:8000/watchlist', { watchlistMarket })
       .then((response) => {
         console.log(response)
       })
@@ -27,7 +27,7 @@ export function WatchlistsContextProvider(props) {
   }
 
   function removeWatchlistHandler(marketId) {
-    axios.delete('http://localhost:3001/watchlist', { data: { marketId } })
+    axios.delete('http://localhost:8000/watchlist', { data: { marketId } })
       .then((response) => {
         console.log(response)
       })
@@ -43,7 +43,7 @@ export function WatchlistsContextProvider(props) {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3001/watchlist', {
+    axios.get('http://localhost:8000/watchlist', {
       params: {
         userId: 1
       }

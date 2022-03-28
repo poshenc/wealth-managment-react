@@ -7,7 +7,7 @@ function NewMarketPage() {
   const navigate = useNavigate()
 
   function onAddMarket(marketData) {
-    axios.post('http://localhost:3001/market', { marketData })
+    axios.post('http://localhost:8000/market', { marketData })
       .then((response) => {
         navigate('/')
       })
