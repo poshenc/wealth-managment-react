@@ -32,19 +32,19 @@ function SignupForm(props) {
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.control}>
         <label htmlFor='name'>User Name</label>
-        <input type='text' required id='name' ref={nameInputRef} />
+        <input type='text' id='name' ref={nameInputRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor='email'>Email</label>
-        <input type='email' required id='email' ref={emailInputRef} />
+        <input type='email' id='email' ref={emailInputRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor='password'>Password</label>
-        <input type='text' required id='password' ref={passwordInputRef} />
+        <input type='text' id='password' ref={passwordInputRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor='passwordCheck'>Password Check</label>
-        <input type='text' required id='passwordCheck' ref={passwordCheckInputRef} />
+        <input type='text' id='passwordCheck' ref={passwordCheckInputRef} />
       </div>
       <div className={classes.actions}>
         <button>Sign Up</button>
